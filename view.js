@@ -22,6 +22,18 @@ function initMap (){
 
 	});
 
+	runnersInfo.done(function(runnersResponse) {
+		
+		var runnersIDs = runnersResponse["runners"].map(r => r.id);
+
+		runnersIDs.forEach(id => $.ajax(URL + "/runners/" + id).done(function (idResponse) {
+			console.log(idResponse);
+		}));
+
+		//console.log(runners);
+
+	});
+
 
 
 }
