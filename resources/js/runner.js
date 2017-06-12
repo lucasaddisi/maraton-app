@@ -5,7 +5,4 @@ var Runner = function(name, historyPositions){
 
 	this.asd
 
-
-
 }
-
