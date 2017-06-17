@@ -36,7 +36,7 @@ var Track = function(){
 		}
 	}
 
-var Postions = function(){
+var Positions = function(){
 	this.runner = "";
 	this.positions = [];
 

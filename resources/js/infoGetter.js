@@ -1,6 +1,7 @@
 var InfoGetter = function(mainUrl){
 
 	this.mainUrl = mainUrl;
+	this.creator = new Creator();
 
 	this.getTrackInfo = function(trackID){
 
@@ -24,23 +25,18 @@ var InfoGetter = function(mainUrl){
 
 	this.fillTrack = function(trackInfo, track){
 
-		return  trackInfo.track.coordinates.map(c => track.addPoint(c.lat, c.lon));
+	 	trackInfo.track.coordinates.map(c => track.addPoint(c.lat, c.lon));
 
 	}
 
-	this.fillRunner = function(runnerInfo, runner){
+	this.fillRunners = function(runnersInfo, runners){
 
-		runner.setId(runnerInfo.runner.id);
-		runner.setName(runnerInfo.runner.name);
-		runner.setSponsor(runnerInfo.runner.id, runnerInfo.runner.name);
-		runner.setSurname(runnerInfo.runner.surname);
-
+		runnersInfo.runners.map(run => runners.push(this.creator.createRunner(run)));
 	}
 
-	this.fillPositions = function(positionInfo, positionsR){
+	this.fillPositions = function(positionsInfo, positions){
 
-		positionsR.setRunner(positionInfo.position.runner);
-		positionInfo.position.positions.map(pos => positionsR.addPositions(pos.lat, pos.lon));
+		positionsInfo.positions.map(pos => positions.push(this.creator.createPositions(pos)));
 
 	}
 
