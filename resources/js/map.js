@@ -22,8 +22,8 @@ var Mapa = function (mapID) {
 
 	}
 
-	function drawRunner(){
-
+	this.drawRunner = function(){
+		L.marker([-34.5221554, -58.7000067]).addTo(this.mapa);
 	}
 
 }

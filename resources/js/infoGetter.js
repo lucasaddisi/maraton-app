@@ -4,7 +4,7 @@ var InfoGetter = function(mainUrl){
 	this.creator = new Creator();
 
 	this.getTrackInfo = function(trackID){
-
+		
 		return $.ajax(mainUrl + "/tracks/" + trackID);
 
 	}
@@ -28,22 +28,22 @@ var InfoGetter = function(mainUrl){
 	 	trackInfo.track.coordinates.map(c => track.addPoint(c.lat, c.lon));
 
 	}
-
+	//Fills Runner array
 	this.fillRunners = function(runnersInfo, runners){
 
 		runnersInfo.runners.map(run => runners.push(this.creator.createRunner(run)));
 
 	}
-
+	//Fills positions Array
 	this.fillPositions = function(positionsInfo, positions){
 
 		positionsInfo.positions.map(pos => positions.push(this.creator.createPositions(pos)));
 
 	}
 
-
+	//Asociates runners positions
 	this.asociatePosition = function(runner, positions){
-		//Buscamos las posiciones de un runner
+		//Find runners positions in positions array
 		var setPositionRunner = function(runner, positions){
 				 for(pos in positions)
 						if(positions[pos].runner === runner.id)
