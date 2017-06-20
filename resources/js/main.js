@@ -14,12 +14,13 @@ function bootstrap() {
 	then(r => console.log(this.track))
 
 	this.infoGetter.getRunnerInfo("").
-	then(info => this.infoGetter.fillRunners(info, this.runner)).
-	then(r => console.log(this.runner))
+	then(info => this.infoGetter.fillRunners(info, this.runner))
 
 	this.infoGetter.getPositionInfo("").
 	then(info => this.infoGetter.fillPositions(info, this.positions)).
 	then(p => console.log(this.positions))
+
+	this.infoGetter.asociatePostion(runner, positions);
 
 }
 

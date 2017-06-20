@@ -4,6 +4,7 @@ var Runner = function(){
 	this.name = "";
 	this.sponsor = {id : "", name : ""};
 	this.surname = "";
+	this.positions = [];
 
 	this.setId = function(id){
 		this.id = id;
@@ -20,6 +21,11 @@ var Runner = function(){
 
 	this.setSurname = function(surname){
 		this.surname = surname;
+	}
+
+
+	this.setPositions = function(pos){
+			
 	}
 
 }

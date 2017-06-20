@@ -40,4 +40,10 @@ var InfoGetter = function(mainUrl){
 
 	}
 
+
+
+	this.asociatePostion(runner, positions){
+		
+	}
+
 }
