@@ -4,7 +4,7 @@ var Runner = function(){
 	this.name = "";
 	this.sponsor = {id : "", name : ""};
 	this.surname = "";
-	this.positions = [];
+	this.positions = Object	;
 
 	this.setId = function(id){
 		this.id = id;
@@ -23,9 +23,8 @@ var Runner = function(){
 		this.surname = surname;
 	}
 
-
 	this.setPositions = function(pos){
-			
+			this.positions = pos;
 	}
 
 }

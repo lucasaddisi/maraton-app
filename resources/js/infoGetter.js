@@ -32,6 +32,7 @@ var InfoGetter = function(mainUrl){
 	this.fillRunners = function(runnersInfo, runners){
 
 		runnersInfo.runners.map(run => runners.push(this.creator.createRunner(run)));
+
 	}
 
 	this.fillPositions = function(positionsInfo, positions){
@@ -41,9 +42,16 @@ var InfoGetter = function(mainUrl){
 	}
 
 
+	this.asociatePosition = function(runner, positions){
+		//Buscamos las posiciones de un runner
+		var setPositionRunner = function(runner, positions){
+				 for(pos in positions)
+						if(positions[pos].runner === runner.id)
+							runner.setPositions(positions[pos]);
 
-	this.asociatePostion(runner, positions){
-		
+		}
+
+		runner.map(r => setPositionRunner(r, positions));
 	}
 
 }
