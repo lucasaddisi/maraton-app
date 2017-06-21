@@ -1,30 +1,33 @@
 function bootstrap() {
 
-	this.mapa = new Mapa("mapid");
-	this.infoGetter = new InfoGetter("https://fastspeedster.herokuapp.com/api");
-	this.mapa.init();
+	var mapa = new Mapa("mapid");
+	var infoGetter = new InfoGetter("https://fastspeedster.herokuapp.com/api");
+	mapa.init();
 
-	this.track = new Track();
-	this.runner = [];
-	this.positions = [];
+	var track = new Track();
+	var runner = [];
+	var positions = [];
 
-	this.infoGetter.getTrackInfo(42).
-	then(info => this.infoGetter.fillTrack(info, this.track)).
-	then(r => this.mapa.drawTrack(this.track))
+	var ajax1 = function(){
+	 console.log(runner);
+	 infoGetter.getTrackInfo(42).
+	 then(info => infoGetter.fillTrack(info, track)).
+	 then(r => mapa.drawTrack(track))
+ }
 
-	this.infoGetter.getRunnerInfo("").
-	then(info => this.infoGetter.fillRunners(info, this.runner))
+	var ajax2 = function() {
+		infoGetter.getRunnerInfo("").
+		then(info => infoGetter.fillRunners(info, runner))
+	}
 
-	this.infoGetter.getPositionInfo("").
-	then(info => this.infoGetter.fillPositions(info, this.positions)).
-	then(pos => this.infoGetter.asociatePosition(this.runner, this.positions)).
-	then(r => console.log(this.runner))
+	var ajax3 = function(){
+		infoGetter.getPositionInfo("").
+		then(info => infoGetter.fillPositions(info, positions)).
+		then(pos => infoGetter.asociatePosition(runner, positions)).
+		then(r => console.log(runner))
+	}
 
-	$(document).ready(function(){
-	    $(document).ajaxStop(function(){
-	        console.log("hola");
-	    })});
-
+		$.when(ajax1(), ajax2(), ajax3()).done(console.log("Hokus"));
 	//Dibujar los corredores
 	//Hacer que se muevan
 	//Y qué pasa con las cámaras?

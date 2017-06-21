@@ -4,7 +4,7 @@ var InfoGetter = function(mainUrl){
 	this.creator = new Creator();
 
 	this.getTrackInfo = function(trackID){
-		
+
 		return $.ajax(mainUrl + "/tracks/" + trackID);
 
 	}
