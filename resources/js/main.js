@@ -14,7 +14,7 @@ function bootstrap() {
 	 return infoGetter.getTrackInfo(42).
 	 then(info => infoGetter.fillTrack(info, track)).
 	 then(r => mapa.drawTrack(track))
- }
+ 	}
 
 	var ajax2 = function() {
 		return infoGetter.getRunnerInfo("").
@@ -38,8 +38,8 @@ function bootstrap() {
 		$.when(ajax1(), ajax2(), ajax3(),ajax4()).
 		done(p => runner.map(run => mapa.drawRunner(run))).
 		done(p => cameras.map(cam => mapa.drawCamera(cam))).
-		done(p => runner.map(run =>movingMarkers.push(L.Marker.movingMarker(run.positions, 1000)))).
-		done(p=> movingMarkers.map(mm => mm.start()))
+		done(p => runner.map(run => movingMarkers.push(L.Marker.movingMarker(run.positions, 1000)))).
+		done(p => movingMarkers.map(mm => mm.start()))
 
 	//Hacer que se muevan
 	//Y qué pasa con las cámaras?

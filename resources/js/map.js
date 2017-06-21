@@ -28,7 +28,18 @@ var Mapa = function (mapID) {
 	}
 
 	this.drawCamera = function(camera){
-		L.marker([camera.coordinate.lat, camera.coordinate.lon])
+
+		var cameraIcon = L.icon({
+    iconUrl: '\images\\ic_camera_enhance_black_24dp_1x.png',
+
+    iconSize:     [20, 20], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+		});
+
+		L.marker([camera.coordinate.lat, camera.coordinate.lon], {icon: cameraIcon})
 		.addTo(this.mapa);
 	}
 
