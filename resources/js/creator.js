@@ -19,6 +19,11 @@ var Creator = function(){
 		return ret;
 	}
 
-  
+  this.createCamera = function(camera){
+    ret = new Camera();
+    ret.setCamera(camera);
+
+    return ret;
+  }
 
 }

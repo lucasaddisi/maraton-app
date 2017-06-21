@@ -21,7 +21,9 @@ var InfoGetter = function(mainUrl){
 
 	}
 
-
+	this.getCameraInfo = function(cameraID){
+		return $.ajax(mainUrl + "/webcams/" + cameraID);
+	}
 
 	this.fillTrack = function(trackInfo, track){
 
@@ -40,6 +42,11 @@ var InfoGetter = function(mainUrl){
 		positionsInfo.positions.map(pos => positions.push(this.creator.createPositions(pos)));
 
 	}
+	//Fills camera array
+	this.fillCameras = function(cameraInfo, cameras){
+		cameraInfo.webcams.map(webC => cameras.push(this.creator.createCamera(webC)));
+	}
+
 
 	//Asociates runners positions
 	this.asociatePosition = function(runner, positions){

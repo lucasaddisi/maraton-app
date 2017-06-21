@@ -7,28 +7,40 @@ function bootstrap() {
 	var track = new Track();
 	var runner = [];
 	var positions = [];
+	var cameras = [];
+	var movingMarkers = [];
 
 	var ajax1 = function(){
-	 console.log(runner);
-	 infoGetter.getTrackInfo(42).
+	 return infoGetter.getTrackInfo(42).
 	 then(info => infoGetter.fillTrack(info, track)).
 	 then(r => mapa.drawTrack(track))
  }
 
 	var ajax2 = function() {
-		infoGetter.getRunnerInfo("").
+		return infoGetter.getRunnerInfo("").
 		then(info => infoGetter.fillRunners(info, runner))
 	}
 
 	var ajax3 = function(){
-		infoGetter.getPositionInfo("").
+		return infoGetter.getPositionInfo("").
 		then(info => infoGetter.fillPositions(info, positions)).
 		then(pos => infoGetter.asociatePosition(runner, positions)).
 		then(r => console.log(runner))
 	}
 
-		$.when(ajax1(), ajax2(), ajax3()).done(console.log("Hokus"));
-	//Dibujar los corredores
+	var ajax4 = function(){
+		 return infoGetter.getCameraInfo(42).
+		 then(info => infoGetter.fillCameras(info, cameras)).
+		 then(c => console.log(cameras))
+
+	}
+
+		$.when(ajax1(), ajax2(), ajax3(),ajax4()).
+		done(p => runner.map(run => mapa.drawRunner(run))).
+		done(p => cameras.map(cam => mapa.drawCamera(cam))).
+		done(p => runner.map(run =>movingMarkers.push(L.Marker.movingMarker(run.positions, 1000)))).
+		done(p=> movingMarkers.map(mm => mm.start()))
+
 	//Hacer que se muevan
 	//Y qué pasa con las cámaras?
 

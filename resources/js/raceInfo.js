@@ -4,7 +4,7 @@ var Runner = function(){
 	this.name = "";
 	this.sponsor = {id : "", name : ""};
 	this.surname = "";
-	this.positions = Object	;
+	this.positions = [];
 
 	this.setId = function(id){
 		this.id = id;
@@ -24,7 +24,7 @@ var Runner = function(){
 	}
 
 	this.setPositions = function(pos){
-			this.positions = pos;
+			pos.positions.map(p => this.positions.push(p));
 	}
 
 }
@@ -55,4 +55,14 @@ var Positions = function(){
 
 }
 
-var WebCam = function(){}
+var Camera = function(){
+	this.id = "";
+	this.coordinate = "";
+
+	this.setCamera = function(camera){
+		this.id = camera.id;
+		this.coordinate = camera.coordinate;
+
+	}
+
+}

@@ -22,8 +22,14 @@ var Mapa = function (mapID) {
 
 	}
 
-	this.drawRunner = function(){
-		L.marker([-34.5221554, -58.7000067]).addTo(this.mapa);
+	this.drawRunner = function(runner){
+		L.marker([runner.positions[0].lat, runner.positions[0].lng])
+		.addTo(this.mapa);
+	}
+
+	this.drawCamera = function(camera){
+		L.marker([camera.coordinate.lat, camera.coordinate.lon])
+		.addTo(this.mapa);
 	}
 
 }

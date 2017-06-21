@@ -67,7 +67,6 @@ L.Marker.MovingMarker = L.Marker.extend({
         if (this.isRunning()) {
             return;
         }
-
         if (this.isPaused()) {
             this.resume();
         } else {
