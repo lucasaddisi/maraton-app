@@ -38,7 +38,7 @@ var Mapa = function (mapID) {
 		var info = "<p><u><b>Runner Name:</u> </b>" + runner.name + " " + runner.surname + "</p>" +
 							 "<p><u><b>Sponsor Name:</u> </b>" + runner.sponsor.name + "</p>";
 
-		var marker = L.Marker.movingMarker(runner.positions, [5000],
+		var marker = L.Marker.movingMarker(runner.positions, [10000],
 	 	{icon: this.icon('\images\\ic_android_black_24dp_2x.png')}	)
 		.bindPopup(info)
 		.addTo(this.mapa);
