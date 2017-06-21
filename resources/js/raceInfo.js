@@ -50,7 +50,7 @@ var Positions = function(){
 	}
 
 	this.addPositions = function(latitud, longitud){
-			this.positions.push({lat:latitud, lng:longitud});
+			this.positions.push({lat:latitud, lon:longitud});
 	}
 
 }

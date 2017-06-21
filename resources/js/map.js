@@ -35,20 +35,22 @@ var Mapa = function (mapID) {
 
 	this.drawRunner = function(runner){
 
-		var info = "Runner Name: " + runner.name + " " + runner.surname +
-							 "\n Sponsor Name: " + runner.sponsor.name;
+		var info = "<p><u><b>Runner Name:</u> </b>" + runner.name + " " + runner.surname + "</p>" +
+							 "<p><u><b>Sponsor Name:</u> </b>" + runner.sponsor.name + "</p>";
 
-		L.marker([runner.positions[0].lat, runner.positions[0].lng],
-	 	{icon: this.icon('\images\\ic_android_black_24dp_2x.png')})
+		var marker = L.Marker.movingMarker(runner.positions, [5000],
+	 	{icon: this.icon('\images\\ic_android_black_24dp_2x.png')}	)
 		.bindPopup(info)
 		.addTo(this.mapa);
+
+		return marker;
 	}
 
 	this.drawCamera = function(camera){
 
-		var info = "Camera ID: " + camera.id;
+		var info = "<u><b>Camera ID:</u> </b>" + camera.id;
 
-		L.marker([camera.coordinate.lat, camera.coordinate.lon],
+		return L.marker([camera.coordinate.lat, camera.coordinate.lon],
 	 	{icon: this.icon('\images\\ic_camera_enhance_black_24dp_2x.png')})
 		.bindPopup(info)
 		.addTo(this.mapa);

@@ -213,12 +213,7 @@ L.Marker.MovingMarker = L.Marker.extend({
         this._currentLine = this._latlngs.slice(index, index + 2);
     },
 
-    /**
-     * Load the line where the marker is
-     * @param  {Number} timestamp
-     * @return {Number} elapsed time on the current line or null if
-     * we reached the end or marker is at a station
-     */
+
     _updateLine: function(timestamp) {
         // time elapsed since the last latlng
         var elapsedTime = timestamp - this._startTimeStamp;

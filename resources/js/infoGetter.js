@@ -38,7 +38,7 @@ var InfoGetter = function(mainUrl){
 	}
 	//Fills positions Array
 	this.fillPositions = function(positionsInfo, positions){
-
+		console.log(positionsInfo);
 		positionsInfo.positions.map(pos => positions.push(this.creator.createPositions(pos)));
 
 	}

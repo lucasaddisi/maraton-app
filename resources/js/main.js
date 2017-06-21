@@ -8,6 +8,7 @@ function bootstrap() {
 	var runner = [];
 	var positions = [];
 	var cameras = [];
+
 	var movingMarkers = [];
 
 	var ajax1 = function(){
@@ -30,16 +31,14 @@ function bootstrap() {
 
 	var ajax4 = function(){
 		 return infoGetter.getCameraInfo(42).
-		 then(info => infoGetter.fillCameras(info, cameras)).
-		 then(c => console.log(cameras))
+		 then(info => infoGetter.fillCameras(info, cameras))
 
 	}
 
 		$.when(ajax1(), ajax2(), ajax3(),ajax4()).
-		done(p => runner.map(run => mapa.drawRunner(run))).
+		done(p => runner.map(run => movingMarkers.push(mapa.drawRunner(run)))).
 		done(p => cameras.map(cam => mapa.drawCamera(cam))).
-		done(p => runner.map(run => movingMarkers.push(L.Marker.movingMarker(run.positions, 1000)))).
-		done(p => movingMarkers.map(mm => mm.start()))
+		done(p => movingMarkers.map(marker => marker.start()))
 
 	//Hacer que se muevan
 	//Y qué pasa con las cámaras?
